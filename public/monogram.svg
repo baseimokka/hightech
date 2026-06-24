@@ -1,0 +1,10 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="High Tech monogram">
+  <g stroke="none">
+    <circle cx="60" cy="61" r="47" fill="none" stroke="#b5241f" stroke-width="8.5" stroke-dasharray="245 50" stroke-dashoffset="24" stroke-linecap="butt" transform="rotate(125 60 61)"></circle>
+    <rect x="34" y="38" width="9" height="46" fill="#b5241f"></rect>
+    <rect x="55" y="38" width="9" height="46" fill="#b5241f"></rect>
+    <rect x="34" y="56" width="30" height="9" fill="#b5241f"></rect>
+    <rect x="59" y="38" width="33" height="9" fill="#b5241f"></rect>
+    <rect x="78" y="38" width="9" height="46" fill="#b5241f"></rect>
+  </g>
+</svg>

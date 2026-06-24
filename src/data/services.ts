@@ -1,0 +1,96 @@
+import type { Service } from './types';
+
+/**
+ * Services catalogue. Drives the home services grid (all entries) and the
+ * Services page detail rows (entries that have specifications). The quote-form
+ * service dropdown is also derived from this list.
+ */
+export const services: Service[] = [
+  {
+    id: 'laser-cutting',
+    slug: 'laser-cutting',
+    icon: 'scan-line',
+    image: '/images/services/laser-cutting.jpg',
+    titleAr: 'القص بالليزر',
+    titleEn: 'Laser Cutting',
+    descriptionAr: 'قص ليزر فايبر حتى 25 مم بدقة ±0.1 مم على الصاج.',
+    descriptionEn: 'Fiber laser cutting up to 25 mm with ±0.1 mm accuracy on sheet metal.',
+    tagAr: 'ليزر',
+    tagEn: 'Laser',
+    specificationsAr: ['فايبر 6kW', 'فولاذ 25 مم', '3000×1500'],
+    specificationsEn: ['Fiber 6kW', '25 mm steel', '3000×1500'],
+  },
+  {
+    id: 'cnc-machining',
+    slug: 'cnc-machining',
+    icon: 'cog',
+    image: '/images/services/cnc-machining.jpg',
+    titleAr: 'تصنيع CNC',
+    titleEn: 'CNC Machining',
+    descriptionAr: 'خراطة وتفريز 3 و4 و5 محاور بتفاوتات دقيقة.',
+    descriptionEn: '3-, 4- and 5-axis milling and turning to tight tolerances.',
+    tagAr: 'CNC',
+    tagEn: 'CNC',
+    specificationsAr: ['5 محاور', '±0.02 مم', 'خراطة Ø500'],
+    specificationsEn: ['5-axis', '±0.02 mm', 'Ø500 turning'],
+  },
+  {
+    id: 'spare-parts',
+    slug: 'spare-parts',
+    icon: 'wrench',
+    image: '/images/services/spare-parts.jpg',
+    titleAr: 'قطع الغيار',
+    titleEn: 'Spare Parts',
+    descriptionAr: 'قطع غيار بالهندسة العكسية أو حسب المواصفات.',
+    descriptionEn: 'Reverse-engineered and made-to-spec replacement components.',
+    tagAr: 'قطع غيار',
+    tagEn: 'Spare parts',
+    specificationsAr: ['هندسة عكسية', 'كل السبائك', 'إنجاز 48 ساعة'],
+    specificationsEn: ['Reverse-eng', 'Any alloy', '48h rush'],
+  },
+  {
+    id: 'maintenance',
+    slug: 'maintenance',
+    icon: 'shield-check',
+    image: '/images/services/maintenance.jpg',
+    titleAr: 'الصيانة',
+    titleEn: 'Maintenance',
+    descriptionAr: 'صيانة وقائية وإصلاح فوري لخطوط الإنتاج.',
+    descriptionEn: 'Preventive maintenance and rapid repair for production lines.',
+    tagAr: 'صيانة',
+    tagEn: 'Maintenance',
+    specificationsAr: ['صيانة وقائية', 'طوارئ 24/7', 'قطع أصلية'],
+    specificationsEn: ['Preventive', '24/7 callout', 'OEM parts'],
+  },
+  {
+    id: 'technical-support',
+    slug: 'technical-support',
+    icon: 'headset',
+    image: '/images/services/technical-support.jpg',
+    titleAr: 'الدعم الفني',
+    titleEn: 'Technical Support',
+    descriptionAr: 'استشارات هندسية ودعم تطبيقي من فريق متخصص.',
+    descriptionEn: 'Engineering consultation and applied support from specialists.',
+    tagAr: 'دعم',
+    tagEn: 'Support',
+    specificationsAr: ['في الموقع', 'CAD/CAM', 'تدريب'],
+    specificationsEn: ['On-site', 'CAD/CAM', 'Training'],
+  },
+  {
+    id: 'forming-welding',
+    slug: 'forming-welding',
+    icon: 'layers',
+    image: '/images/services/forming-welding.jpg',
+    titleAr: 'تشكيل وثني',
+    titleEn: 'Forming & Welding',
+    descriptionAr: 'ثني وكبس ولحام احترافي للهياكل المعدنية.',
+    descriptionEn: 'Professional bending, pressing and welding of metal structures.',
+    tagAr: 'تشكيل',
+    tagEn: 'Forming',
+    specificationsAr: [],
+    specificationsEn: [],
+  },
+];
+
+/** Services shown as full detail rows on the Services page. */
+export const detailedServices = services.filter((s) => s.specificationsEn.length > 0);

@@ -1,0 +1,195 @@
+{
+  "dir": "ltr",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "machines": "Machines",
+    "portfolio": "Portfolio",
+    "quote": "Request Quote",
+    "contact": "Contact"
+  },
+  "cta": {
+    "quote": "Request a Quote",
+    "whatsapp": "WhatsApp",
+    "services": "Our Services",
+    "portfolio": "View Portfolio",
+    "machines": "See Machines",
+    "learn": "Learn more",
+    "send": "Send Request",
+    "call": "Call Now"
+  },
+  "hero": {
+    "eyebrow": "CNC · LASER CUTTING · METAL FABRICATION",
+    "title": "Precision Engineering at Industrial Scale",
+    "sub": "Laser cutting, CNC machining, spare parts and metal fabrication — from prototype to high-volume production, delivered on time to the highest quality.",
+    "mediaCaption": "CNC machine in action — hero video",
+    "badges": ["ISO 9001:2015", "±0.02 MM", "25+ YEARS"]
+  },
+  "services": {
+    "eyebrow": "What we do",
+    "title": "End-to-end metalworking services",
+    "sub": "Everything your shop floor needs, under one roof, to ISO 9001 standards."
+  },
+  "industries": {
+    "eyebrow": "Industries",
+    "title": "Built for the toughest sectors"
+  },
+  "why": {
+    "eyebrow": "Why choose us",
+    "title": "Your trusted precision manufacturing partner",
+    "mediaLabel": "Factory floor · 24/7 production",
+    "mediaCaption": "Shop floor photography",
+    "items": [
+      { "icon": "target", "t": "Quality assured", "d": "Every part inspected on calibrated metrology before dispatch." },
+      { "icon": "truck", "t": "Fast delivery", "d": "Strict production scheduling and 98% on-time record." },
+      { "icon": "badge-check", "t": "Certified quality", "d": "ISO 9001 quality systems and full material traceability." },
+      { "icon": "users", "t": "Expert team", "d": "Engineers and technicians with 25+ years of experience." }
+    ]
+  },
+  "portfolio": {
+    "eyebrow": "Our work",
+    "title": "Projects we’re proud of",
+    "sub": "A sample of the parts and projects we’ve delivered for clients.",
+    "beforeAfterEyebrow": "Before / After",
+    "beforeAfterTitle": "From raw stock to finished part",
+    "beforeRaw": "Before · raw sheet",
+    "afterFinished": "After · finished part",
+    "before": "Before",
+    "after": "After"
+  },
+  "clients": {
+    "eyebrow": "Clients",
+    "title": "Trusted by industry leaders"
+  },
+  "finalCta": {
+    "title": "Ready to start? Send your drawing and get a quote today",
+    "sub": "Our team typically replies within 2 hours on WhatsApp."
+  },
+  "about": {
+    "eyebrow": "About us",
+    "title": "Twenty-five years of steel and precision",
+    "media": {
+      "facility": "Main facility",
+      "factory": "Factory",
+      "cncBay": "CNC bay",
+      "laserCell": "Laser cell"
+    }
+  },
+  "quote": {
+    "eyebrow": "Request a quote",
+    "title": "Get an accurate quote",
+    "sub": "Fill in the form or message us directly on WhatsApp — we reply within 2 hours.",
+    "f": {
+      "name": "Full name",
+      "company": "Company",
+      "phone": "Phone number",
+      "email": "Email",
+      "service": "Service required",
+      "material": "Material",
+      "message": "Project details",
+      "file": "Attach drawings (optional)"
+    },
+    "ph": {
+      "name": "e.g. Ahmed Al Mansoori",
+      "company": "Company name",
+      "phone": "+966 5x xxx xxxx",
+      "email": "name@company.com",
+      "service": "Select a service",
+      "material": "Select material",
+      "message": "Material, quantity, tolerances, deadline…"
+    },
+    "materials": ["Mild Steel", "Stainless Steel", "Aluminium", "Brass", "Copper"],
+    "or": "Or message us now",
+    "whatsappLead": "Most of our clients prefer WhatsApp for the fastest response.",
+    "fileHelper": "PDF · DWG · DXF · STEP — max 25 MB each",
+    "fileCta": "Click to upload",
+    "fileDrag": "or drag files here",
+    "confidential": "Your details stay confidential.",
+    "repliesIn2h": "Replies in ~2h",
+    "online": "Online now",
+    "success": "Request received",
+    "successSub": "Our team will reply on WhatsApp within 2 hours. Attach your design files in the chat if you haven’t already.",
+    "newRequest": "New request",
+    "openingWhatsApp": "Opening WhatsApp…",
+    "trust": ["ISO 9001 quality", "Accurate, fast quotes", "All CAD formats accepted"],
+    "waIntro": "Quote request — High Tech",
+    "waFilesNote": "Attached files (please send them in the chat):",
+    "errors": {
+      "name": "Please enter your name",
+      "phone": "Please enter a valid phone number",
+      "service": "Please choose a service"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Get in touch with our team",
+    "sub": "We’re here to answer your technical questions and quote requests.",
+    "phone": "Phone",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Working hours",
+    "online": "Online now",
+    "mapCaption": "Map · industrial zone"
+  },
+  "machines": {
+    "eyebrow": "Our machines",
+    "title": "High-precision machines & equipment",
+    "sub": "A fleet of CNC, laser and industrial equipment backing your production from prototype to full run.",
+    "all": "All",
+    "viewDetails": "View details",
+    "specifications": "Specifications",
+    "features": "Features",
+    "category": "Category",
+    "status": "Status",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "back": "Back to machines",
+    "ctaTitle": "Interested in this machine?",
+    "ctaSub": "Get in touch for availability, pricing and supply options.",
+    "quoteMessage": "Hi, I’d like info / a quote about: {name}"
+  },
+  "footer": {
+    "rights": "© 2026 High Tech. All rights reserved.",
+    "quick": "Quick links",
+    "svc": "Services",
+    "reach": "Get in touch",
+    "certified": "ISO 9001:2015 CERTIFIED"
+  },
+  "meta": {
+    "home": {
+      "title": "High Tech — CNC Machining, Laser Cutting & Metal Fabrication",
+      "description": "Precision engineering at industrial scale: laser cutting, CNC machining, spare parts and metal fabrication. Request a quote on WhatsApp."
+    },
+    "about": {
+      "title": "About — High Tech",
+      "description": "Twenty-five years of precision metalworking, backed by the latest CNC and laser machines."
+    },
+    "services": {
+      "title": "Services — High Tech",
+      "description": "Fiber laser cutting, 5-axis CNC machining, spare parts, maintenance and technical support to ISO 9001 standards."
+    },
+    "machines": {
+      "title": "Machines — High Tech",
+      "description": "High Tech's fleet of CNC, laser and industrial machines with detailed specifications and features."
+    },
+    "portfolio": {
+      "title": "Portfolio — High Tech",
+      "description": "A sample of the laser cutting, CNC machining and metal fabrication projects we’ve delivered."
+    },
+    "quote": {
+      "title": "Request a Quote — High Tech",
+      "description": "Send your drawings (DXF · DWG · PDF) and get an accurate quote within 2 hours on WhatsApp."
+    },
+    "contact": {
+      "title": "Contact — High Tech",
+      "description": "Get in touch with the High Tech team by phone, email or WhatsApp for quotes and technical questions."
+    }
+  },
+  "a11y": {
+    "menu": "Menu",
+    "switchLang": "Switch to Arabic",
+    "whatsapp": "Chat on WhatsApp"
+  }
+}

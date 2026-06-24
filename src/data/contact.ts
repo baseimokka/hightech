@@ -6,8 +6,8 @@ import type { ContactInfo } from './types';
  * digits only.
  */
 export const contact: ContactInfo = {
-  phone: '+966 50 000 0000',
-  whatsapp: '966500000000',
+  phone: '+201286000646',
+  whatsapp: '201286000646',
   email: 'sales@hightech.sa',
 
   addressAr: 'المنطقة الصناعية الثالثة، الرياض، المملكة العربية السعودية',

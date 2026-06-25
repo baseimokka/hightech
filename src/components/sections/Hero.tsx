@@ -21,7 +21,10 @@ export function Hero() {
 
   return (
     <div className="relative overflow-hidden bg-bg-dark">
-      <div className="absolute inset-0">
+      {/* Mobile (<640px): in-flow banner at the image's native 12:5 ratio so the WHOLE
+          photo is visible (no crop), with the text below it. Desktop/tablet (>=640px):
+          original absolute full-bleed background — unchanged. */}
+      <div className="relative w-full aspect-[12/5] sm:absolute sm:inset-0 sm:aspect-auto sm:w-auto">
         <Image
           src="/images/hero.jpg"
           alt=""
@@ -30,18 +33,9 @@ export function Hero() {
           sizes="100vw"
           className="object-cover"
         />
-        {/* Desktop / tablet (>=640px): original horizontal gradient — unchanged. */}
+        {/* Desktop / tablet (>=640px): horizontal gradient over the full-bleed image —
+            unchanged. Hidden on mobile, where the photo is shown in full above the text. */}
         <div className="absolute inset-0 hidden sm:block" style={{ background: overlay }} />
-        {/* Mobile only (<640px): vertical scrim. The full-width text/buttons sit over a
-            darker base so they stay legible, while the laser & sparks glow through the
-            lighter top. Same brand color (10,12,15) as desktop — only the direction differs. */}
-        <div
-          className="absolute inset-0 sm:hidden"
-          style={{
-            background:
-              'linear-gradient(180deg, rgba(10,12,15,0.62) 0%, rgba(10,12,15,0.82) 58%, rgba(10,12,15,0.96) 100%)',
-          }}
-        />
       </div>
 
       {/* max-sm:!py-14 trims the oversized mobile padding (the inline clamp still drives

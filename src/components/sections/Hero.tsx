@@ -30,11 +30,24 @@ export function Hero() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0" style={{ background: overlay }} />
+        {/* Desktop / tablet (>=640px): original horizontal gradient — unchanged. */}
+        <div className="absolute inset-0 hidden sm:block" style={{ background: overlay }} />
+        {/* Mobile only (<640px): vertical scrim. The full-width text/buttons sit over a
+            darker base so they stay legible, while the laser & sparks glow through the
+            lighter top. Same brand color (10,12,15) as desktop — only the direction differs. */}
+        <div
+          className="absolute inset-0 sm:hidden"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(10,12,15,0.62) 0%, rgba(10,12,15,0.82) 58%, rgba(10,12,15,0.96) 100%)',
+          }}
+        />
       </div>
 
-      <div className="container-page relative" style={{ paddingBlock: 'clamp(4rem,3rem+6vw,7.5rem)' }}>
-        <div className="flex max-w-[680px] flex-col gap-[26px]">
+      {/* max-sm:!py-14 trims the oversized mobile padding (the inline clamp still drives
+          tablet/desktop unchanged). max-sm: centers the column content on phones only. */}
+      <div className="container-page relative max-sm:!py-14" style={{ paddingBlock: 'clamp(4rem,3rem+6vw,7.5rem)' }}>
+        <div className="flex max-w-[680px] flex-col gap-[26px] max-sm:gap-6 max-sm:text-center">
           <Reveal>
             <span className="inline-flex items-center gap-2.5 font-mono text-[13px] tracking-eyebrow uppercase text-white">
               <span className="w-[26px] h-0.5 bg-brand" />
@@ -47,27 +60,28 @@ export function Hero() {
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="m-0 max-w-[560px] text-[var(--fs-lg)] leading-[1.6] text-steel-200 text-pretty">
+            <p className="m-0 max-w-[560px] max-sm:mx-auto text-[var(--fs-lg)] leading-[1.6] text-steel-200 text-pretty">
               {t('hero.sub')}
             </p>
           </Reveal>
           <Reveal delay={0.15}>
-            <div className="flex flex-wrap gap-3.5 mt-1">
+            <div className="flex flex-wrap gap-3.5 mt-1 max-sm:flex-col">
               <Button
                 href={routes.quote}
                 variant="primary"
                 size="lg"
+                className="max-sm:w-full max-sm:flex"
                 iconRight={<Icon name="arrow-right" size={18} className="rtl:rotate-180" />}
               >
                 {t('cta.quote')}
               </Button>
-              <WhatsAppButton size="lg" message={t('hero.title')}>
+              <WhatsAppButton size="lg" message={t('hero.title')} className="max-sm:w-full max-sm:flex">
                 {t('cta.whatsapp')}
               </WhatsAppButton>
             </div>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="flex flex-wrap gap-2.5 mt-1.5">
+            <div className="flex flex-wrap gap-2.5 mt-1.5 max-sm:justify-center">
               {badges.map((b) => (
                 <Badge key={b} variant="outline" className="text-steel-200 border-hairline-dark">
                   {b}

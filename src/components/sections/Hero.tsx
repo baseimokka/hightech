@@ -20,11 +20,11 @@ export function Hero() {
       : 'linear-gradient(90deg, rgba(10,12,15,0.94) 0%, rgba(10,12,15,0.78) 45%, rgba(10,12,15,0.35) 100%)';
 
   return (
-    <div className="relative overflow-hidden bg-bg-dark">
-      {/* Mobile (<640px): the WHOLE photo (no crop) is pinned to the top as a 12:5 banner,
-          positioned absolutely so the hero text can overlay its lower half. Desktop/tablet
-          (>=640px): original absolute full-bleed background — unchanged. */}
-      <div className="absolute top-0 left-0 w-full aspect-[12/5] sm:inset-0 sm:aspect-auto sm:w-auto">
+    <div className="relative overflow-hidden bg-bg-dark max-sm:flex max-sm:flex-col max-sm:justify-end max-sm:min-h-[calc(100svh_-_72px)]">
+      {/* Mobile (<640px): the photo is the full-bleed Hero background (one cohesive section);
+          the laser/sparks focal point shows in the open upper area and the text sits near the
+          bottom over a gradient. Desktop/tablet (>=640px): original full-bleed background — unchanged. */}
+      <div className="absolute inset-0">
         <Image
           src="/images/hero.jpg"
           alt=""
@@ -35,22 +35,23 @@ export function Hero() {
         />
         {/* Desktop / tablet (>=640px): horizontal gradient over the full-bleed image — unchanged. */}
         <div className="absolute inset-0 hidden sm:block" style={{ background: overlay }} />
-        {/* Mobile only: fade the lower part of the photo into the dark background so the
-            overlaid headline stays readable, while the full image is still visible up top. */}
+        {/* Mobile only: subtle at the top so the laser/sparks focal point stays clear, then
+            deepening toward the bottom so the headline, description and buttons stay readable
+            and blend seamlessly into the dark — one continuous section, not two blocks. */}
         <div
           className="absolute inset-0 sm:hidden"
           style={{
             background:
-              'linear-gradient(180deg, rgba(10,12,15,0) 0%, rgba(10,12,15,0) 30%, rgba(10,12,15,0.5) 62%, rgba(10,12,15,0.97) 100%)',
+              'linear-gradient(180deg, rgba(10,12,15,0.30) 0%, rgba(10,12,15,0.06) 26%, rgba(10,12,15,0.12) 44%, rgba(10,12,15,0.55) 66%, rgba(10,12,15,0.92) 86%, rgba(10,12,15,0.99) 100%)',
           }}
         />
       </div>
 
-      {/* On mobile the content overlays the lower half of the photo: pt-[27vw] pushes the
-          text down over the banner (vw scales with the 12:5 banner height), z-10 keeps it
-          above the image. Tablet/desktop keep the original clamp padding untouched. */}
-      <div className="container-page relative z-10 max-sm:!pt-[27vw] max-sm:!pb-12" style={{ paddingBlock: 'clamp(4rem,3rem+6vw,7.5rem)' }}>
-        <div className="flex max-w-[680px] flex-col gap-[26px] max-sm:gap-6 max-sm:text-center">
+      {/* On mobile the content is anchored to the bottom of the full-screen Hero (root
+          justify-end); z-10 keeps it above the image. Tablet/desktop keep the original
+          clamp padding untouched. */}
+      <div className="container-page relative z-10 max-sm:!pt-7 max-sm:!pb-9" style={{ paddingBlock: 'clamp(4rem,3rem+6vw,7.5rem)' }}>
+        <div className="flex max-w-[680px] flex-col gap-[26px] max-sm:gap-7">
           <Reveal>
             <span className="inline-flex items-center gap-2.5 font-mono text-[13px] tracking-eyebrow uppercase text-white">
               <span className="w-[26px] h-0.5 bg-brand" />
@@ -63,7 +64,7 @@ export function Hero() {
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="m-0 max-w-[560px] max-sm:mx-auto text-[var(--fs-lg)] leading-[1.6] text-steel-200 text-pretty">
+            <p className="m-0 max-w-[560px] text-[var(--fs-lg)] leading-[1.6] text-steel-200 text-pretty">
               {t('hero.sub')}
             </p>
           </Reveal>
@@ -84,7 +85,7 @@ export function Hero() {
             </div>
           </Reveal>
           <Reveal delay={0.2}>
-            <div className="flex flex-wrap gap-2.5 mt-1.5 max-sm:justify-center">
+            <div className="flex flex-wrap gap-2.5 mt-1.5">
               {badges.map((b) => (
                 <Badge key={b} variant="outline" className="text-steel-200 border-hairline-dark">
                   {b}

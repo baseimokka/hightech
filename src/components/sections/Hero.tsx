@@ -21,10 +21,10 @@ export function Hero() {
 
   return (
     <div className="relative overflow-hidden bg-bg-dark">
-      {/* Mobile (<640px): in-flow banner at the image's native 12:5 ratio so the WHOLE
-          photo is visible (no crop), with the text below it. Desktop/tablet (>=640px):
-          original absolute full-bleed background — unchanged. */}
-      <div className="relative w-full aspect-[12/5] sm:absolute sm:inset-0 sm:aspect-auto sm:w-auto">
+      {/* Mobile (<640px): the WHOLE photo (no crop) is pinned to the top as a 12:5 banner,
+          positioned absolutely so the hero text can overlay its lower half. Desktop/tablet
+          (>=640px): original absolute full-bleed background — unchanged. */}
+      <div className="absolute top-0 left-0 w-full aspect-[12/5] sm:inset-0 sm:aspect-auto sm:w-auto">
         <Image
           src="/images/hero.jpg"
           alt=""
@@ -33,14 +33,23 @@ export function Hero() {
           sizes="100vw"
           className="object-cover"
         />
-        {/* Desktop / tablet (>=640px): horizontal gradient over the full-bleed image —
-            unchanged. Hidden on mobile, where the photo is shown in full above the text. */}
+        {/* Desktop / tablet (>=640px): horizontal gradient over the full-bleed image — unchanged. */}
         <div className="absolute inset-0 hidden sm:block" style={{ background: overlay }} />
+        {/* Mobile only: fade the lower part of the photo into the dark background so the
+            overlaid headline stays readable, while the full image is still visible up top. */}
+        <div
+          className="absolute inset-0 sm:hidden"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(10,12,15,0) 0%, rgba(10,12,15,0) 30%, rgba(10,12,15,0.5) 62%, rgba(10,12,15,0.97) 100%)',
+          }}
+        />
       </div>
 
-      {/* max-sm:!py-14 trims the oversized mobile padding (the inline clamp still drives
-          tablet/desktop unchanged). max-sm: centers the column content on phones only. */}
-      <div className="container-page relative max-sm:!py-14" style={{ paddingBlock: 'clamp(4rem,3rem+6vw,7.5rem)' }}>
+      {/* On mobile the content overlays the lower half of the photo: pt-[27vw] pushes the
+          text down over the banner (vw scales with the 12:5 banner height), z-10 keeps it
+          above the image. Tablet/desktop keep the original clamp padding untouched. */}
+      <div className="container-page relative z-10 max-sm:!pt-[27vw] max-sm:!pb-12" style={{ paddingBlock: 'clamp(4rem,3rem+6vw,7.5rem)' }}>
         <div className="flex max-w-[680px] flex-col gap-[26px] max-sm:gap-6 max-sm:text-center">
           <Reveal>
             <span className="inline-flex items-center gap-2.5 font-mono text-[13px] tracking-eyebrow uppercase text-white">

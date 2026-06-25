@@ -10,7 +10,7 @@ import { MediaFrame } from '@/components/ui/MediaFrame';
 import { Button } from '@/components/ui/Button';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Reveal } from '@/components/ui/Reveal';
-import { routes } from '@/config/site';
+import { ENABLE_PORTFOLIO, routes } from '@/config/site';
 import {
   company,
   clients,
@@ -126,41 +126,49 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
         </div>
       </Section>
 
-      {/* Portfolio preview */}
-      <Section>
-        <div className="flex flex-wrap items-end justify-between gap-5">
-          <Reveal>
-            <SectionHeading
-              eyebrow={t('portfolio.eyebrow')}
-              title={t('portfolio.title')}
-              description={t('portfolio.sub')}
-            />
-          </Reveal>
-          <Button
-            href={routes.portfolio}
-            variant="outline"
-            iconRight={<Icon name="arrow-right" size={16} className="rtl:rotate-180" />}
-          >
-            {t('cta.portfolio')}
-          </Button>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-[160px] gap-3.5 mt-[var(--space-8)]">
-          {teaser.map((p, i) => (
-            <MediaFrame
-              key={p.id}
-              className={i === 0 ? 'lg:col-span-2 lg:row-span-2' : i === 3 ? 'col-span-2' : undefined}
-              video={i === 3}
-              label={pick(lc, p.titleAr, p.titleEn)}
-              caption={`${projLabel} · ${catShort(p.category)}`}
-              icon={p.icon as IconName}
-              ratio="auto"
-              src={resolveMedia(p.image)}
-              alt={pick(lc, p.titleAr, p.titleEn)}
-              sizes="(max-width: 1024px) 50vw, 25vw"
-            />
-          ))}
-        </div>
-      </Section>
+      {/*
+        Portfolio preview — TEMPORARILY DISABLED.
+        Hidden while ENABLE_PORTFOLIO is false (see src/config/site.ts).
+        Each <Section> owns its own vertical padding, so hiding this block
+        leaves no gap; the layout flows straight into "Clients" below.
+        Re-enable the whole feature by flipping ENABLE_PORTFOLIO back to true.
+      */}
+      {ENABLE_PORTFOLIO && (
+        <Section>
+          <div className="flex flex-wrap items-end justify-between gap-5">
+            <Reveal>
+              <SectionHeading
+                eyebrow={t('portfolio.eyebrow')}
+                title={t('portfolio.title')}
+                description={t('portfolio.sub')}
+              />
+            </Reveal>
+            <Button
+              href={routes.portfolio}
+              variant="outline"
+              iconRight={<Icon name="arrow-right" size={16} className="rtl:rotate-180" />}
+            >
+              {t('cta.portfolio')}
+            </Button>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-[160px] gap-3.5 mt-[var(--space-8)]">
+            {teaser.map((p, i) => (
+              <MediaFrame
+                key={p.id}
+                className={i === 0 ? 'lg:col-span-2 lg:row-span-2' : i === 3 ? 'col-span-2' : undefined}
+                video={i === 3}
+                label={pick(lc, p.titleAr, p.titleEn)}
+                caption={`${projLabel} · ${catShort(p.category)}`}
+                icon={p.icon as IconName}
+                ratio="auto"
+                src={resolveMedia(p.image)}
+                alt={pick(lc, p.titleAr, p.titleEn)}
+                sizes="(max-width: 1024px) 50vw, 25vw"
+              />
+            ))}
+          </div>
+        </Section>
+      )}
 
       {/* Clients */}
       <Section tight className="bg-bg-subtle border-t border-hairline">

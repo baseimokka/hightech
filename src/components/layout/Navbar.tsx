@@ -6,10 +6,10 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
 import { LangSwitch } from './LangSwitch';
-import { routes, site } from '@/config/site';
+import { ENABLE_PORTFOLIO, routes, site } from '@/config/site';
 import { cn } from '@/lib/cn';
 
-const NAV: Array<{
+const NAV_ITEMS: Array<{
   key: 'home' | 'about' | 'services' | 'machines' | 'portfolio' | 'contact';
   href: string;
 }> = [
@@ -20,6 +20,10 @@ const NAV: Array<{
   { key: 'portfolio', href: routes.portfolio },
   { key: 'contact', href: routes.contact },
 ];
+
+// Portfolio is temporarily disabled — its link is filtered out while
+// ENABLE_PORTFOLIO is false (see src/config/site.ts). Re-enable it there.
+const NAV = NAV_ITEMS.filter((item) => ENABLE_PORTFOLIO || item.key !== 'portfolio');
 
 export function Navbar() {
   const t = useTranslations();

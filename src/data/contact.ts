@@ -10,11 +10,11 @@ export const contact: ContactInfo = {
   whatsapp: '201286000646',
   email: 'sales@hightech.sa',
 
-  addressAr: 'المنطقة الصناعية الثالثة، الرياض، المملكة العربية السعودية',
-  addressEn: '3rd Industrial Zone, Riyadh, Saudi Arabia',
+  addressAr: 'شارع البطئ - قليوب -الفليوبيه',
+  addressEn: 'Al-Bati Street - Qalyub - Qalyubia, Qalyub, Egypt, 13216',
 
   hoursAr: 'الأحد – الخميس · 8 ص – 6 م',
   hoursEn: 'Sun – Thu · 8 AM – 6 PM',
 
-  googleMapsUrl: 'https://maps.google.com/?q=3rd+Industrial+Zone+Riyadh',
+  googleMapsUrl: 'https://maps.app.goo.gl/reYGV9omvUugy3EeA',
 };

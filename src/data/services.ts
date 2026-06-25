@@ -6,34 +6,8 @@ import type { Service } from './types';
  * service dropdown is also derived from this list.
  */
 export const services: Service[] = [
-  {
-    id: 'laser-cutting',
-    slug: 'laser-cutting',
-    icon: 'scan-line',
-    image: '/images/services/laser-cutting.jpg',
-    titleAr: 'القص بالليزر',
-    titleEn: 'Laser Cutting',
-    descriptionAr: 'قص ليزر فايبر حتى 25 مم بدقة ±0.1 مم على الصاج.',
-    descriptionEn: 'Fiber laser cutting up to 25 mm with ±0.1 mm accuracy on sheet metal.',
-    tagAr: 'ليزر',
-    tagEn: 'Laser',
-    specificationsAr: ['فايبر 6kW', 'فولاذ 25 مم', '3000×1500'],
-    specificationsEn: ['Fiber 6kW', '25 mm steel', '3000×1500'],
-  },
-  {
-    id: 'cnc-machining',
-    slug: 'cnc-machining',
-    icon: 'cog',
-    image: '/images/services/cnc-machining.jpg',
-    titleAr: 'تصنيع CNC',
-    titleEn: 'CNC Machining',
-    descriptionAr: 'خراطة وتفريز 3 و4 و5 محاور بتفاوتات دقيقة.',
-    descriptionEn: '3-, 4- and 5-axis milling and turning to tight tolerances.',
-    tagAr: 'CNC',
-    tagEn: 'CNC',
-    specificationsAr: ['5 محاور', '±0.02 مم', 'خراطة Ø500'],
-    specificationsEn: ['5-axis', '±0.02 mm', 'Ø500 turning'],
-  },
+
+  
   {
     id: 'spare-parts',
     slug: 'spare-parts',
@@ -63,6 +37,34 @@ export const services: Service[] = [
     specificationsEn: ['Preventive', '24/7 callout', 'OEM parts'],
   },
   {
+  id: 'training',
+  slug: 'training',
+  icon: 'graduation-cap',
+  image: '/images/services/training.jpg',
+  titleAr: 'التدريب',
+  titleEn: 'Training',
+  descriptionAr: 'برامج تدريب عملية ومتخصصة لتطوير مهارات الفرق الفنية والمهندسين على أحدث التقنيات الصناعية.',
+  descriptionEn: 'Practical and specialized training programs to enhance the skills of engineers and technical teams using the latest industrial technologies.',
+  tagAr: 'تدريب',
+  tagEn: 'Training',
+  specificationsAr: ['تدريب عملي', 'ورش عمل', 'شهادات إتمام'],
+  specificationsEn: ['Hands-on Training', 'Workshops', 'Completion Certificates'],
+},
+  {
+  id: 'consulting',
+  slug: 'consulting',
+  icon: 'briefcase',
+  image: '/images/services/consulting.jpg',
+  titleAr: 'الاستشارات',
+  titleEn: 'Consulting',
+  descriptionAr: 'استشارات هندسية وفنية لمساعدة الشركات على تحسين الإنتاجية، واختيار الحلول الصناعية المناسبة.',
+  descriptionEn: 'Engineering and technical consulting services to help businesses improve productivity and implement the right industrial solutions.',
+  tagAr: 'استشارات',
+  tagEn: 'Consulting',
+  specificationsAr: ['دعم فني', 'تحليل المشاريع', 'حلول مخصصة'],
+  specificationsEn: ['Technical Support', 'Project Analysis', 'Customized Solutions'],
+  },
+  {
     id: 'technical-support',
     slug: 'technical-support',
     icon: 'headset',
@@ -76,20 +78,7 @@ export const services: Service[] = [
     specificationsAr: ['في الموقع', 'CAD/CAM', 'تدريب'],
     specificationsEn: ['On-site', 'CAD/CAM', 'Training'],
   },
-  {
-    id: 'forming-welding',
-    slug: 'forming-welding',
-    icon: 'layers',
-    image: '/images/services/forming-welding.jpg',
-    titleAr: 'تشكيل وثني',
-    titleEn: 'Forming & Welding',
-    descriptionAr: 'ثني وكبس ولحام احترافي للهياكل المعدنية.',
-    descriptionEn: 'Professional bending, pressing and welding of metal structures.',
-    tagAr: 'تشكيل',
-    tagEn: 'Forming',
-    specificationsAr: [],
-    specificationsEn: [],
-  },
+  
 ];
 
 /** Services shown as full detail rows on the Services page. */

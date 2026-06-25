@@ -25,7 +25,7 @@ export function pickList(locale: string, ar: string[], en: string[]): string[] {
 }
 
 export interface SocialLinks {
-  linkedin: string;
+  facebook: string;
   instagram: string;
   youtube: string;
 }

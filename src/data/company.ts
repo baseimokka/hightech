@@ -31,8 +31,8 @@ export const company: Company = {
   },
 
   social: {
-    linkedin: '#',
-    instagram: '#',
+    facebook: 'https://www.facebook.com/share/1Cz1Bi5E3y/',
+    instagram: 'https://www.instagram.com/hightech_cnc?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==',
     youtube: '#',
   },
 

@@ -2,7 +2,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
-import { routes, site } from '@/config/site';
+import { ENABLE_PORTFOLIO, routes, site } from '@/config/site';
 import { company, contact, services, pick } from '@/data';
 
 function FootCol({
@@ -31,9 +31,8 @@ export function Footer() {
   const locale = useLocale();
 
   const socials: Array<{ name: IconName; href: string }> = [
-    { name: 'linkedin', href: company.social.linkedin },
+    { name: 'facebook', href: company.social.facebook },
     { name: 'instagram', href: company.social.instagram },
-    { name: 'youtube', href: company.social.youtube },
   ];
 
   return (
@@ -65,7 +64,11 @@ export function Footer() {
             items={[
               { label: t('nav.about'), href: routes.about },
               { label: t('nav.machines'), href: routes.machines },
-              { label: t('nav.portfolio'), href: routes.portfolio },
+              // Portfolio is temporarily disabled (see ENABLE_PORTFOLIO in
+              // src/config/site.ts). Re-enable there to restore this link.
+              ...(ENABLE_PORTFOLIO
+                ? [{ label: t('nav.portfolio'), href: routes.portfolio }]
+                : []),
               { label: t('nav.contact'), href: routes.contact },
             ]}
           />

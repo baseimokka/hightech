@@ -52,13 +52,15 @@ export function Hero() {
       <div className="container-page relative z-10 max-sm:!pt-7 max-sm:!pb-9" style={{ paddingBlock: 'clamp(4rem,3rem+6vw,7.5rem)' }}>
         <div className="flex max-w-[680px] flex-col gap-[26px] max-sm:gap-7">
           <Reveal>
-            <span className="inline-flex items-center gap-2.5 font-mono text-[13px] tracking-eyebrow uppercase text-white">
-              <span className="w-[26px] h-0.5 bg-brand" />
+            {/* Inline (not flex) so a long eyebrow wraps instead of being clipped
+                by the Hero's overflow-hidden. */}
+            <span className="font-mono text-[13px] tracking-eyebrow uppercase text-white leading-[1.7]">
+              <span className="inline-block align-middle w-[26px] h-0.5 bg-brand me-2.5" />
               {t('hero.eyebrow')}
             </span>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="m-0 font-display text-display-1 font-bold leading-[1.02] tracking-tighter2 text-white text-balance">
+            <h1 className="m-0 font-display text-[clamp(2rem,1.3rem+3vw,3.5rem)] font-bold leading-[1.08] tracking-tighter2 text-white text-balance">
               {t('hero.title')}
             </h1>
           </Reveal>

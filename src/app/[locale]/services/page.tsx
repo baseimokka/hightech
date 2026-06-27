@@ -40,6 +40,8 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
           {detailedServices.map((s, i) => {
             const reverse = i % 2 === 1;
             const specs = pickList(lc, s.specificationsAr, s.specificationsEn);
+            // The Industrial Machinery service links to the machines page; the rest go to the quote form.
+            const isMachines = s.id === 'machines';
             return (
               <Reveal key={s.id}>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-11 items-center">
@@ -73,11 +75,11 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                     </div>
                     <div className="mt-1.5">
                       <Button
-                        href={routes.quote}
+                        href={isMachines ? routes.machines : routes.quote}
                         variant="primary"
                         iconRight={<Icon name="arrow-right" size={16} className="rtl:rotate-180" />}
                       >
-                        {t('cta.quote')}
+                        {isMachines ? t('cta.machines') : t('cta.quote')}
                       </Button>
                     </div>
                   </div>

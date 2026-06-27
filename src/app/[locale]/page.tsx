@@ -177,19 +177,21 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
           eyebrow={t('clients.eyebrow')}
           title={t('clients.title')}
         />
-        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-5 mt-[var(--space-7)]">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 mt-[var(--space-7)]">
           {clients.map((c) => (
-            <div
-              key={c.id}
-              className="flex items-center justify-center h-[84px] w-[144px] rounded-md bg-white border border-hairline shadow-xs p-4"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={c.logo}
-                alt={c.name}
-                loading="lazy"
-                className="max-h-full max-w-full w-auto object-contain"
-              />
+            <div key={c.id} className="flex flex-col items-center gap-2.5">
+              <div className="flex items-center justify-center w-full h-[88px] rounded-md bg-white border border-hairline shadow-xs px-4 py-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={c.logo}
+                  alt={c.name}
+                  loading="lazy"
+                  className="max-h-[56px] max-w-[78%] w-auto object-contain"
+                />
+              </div>
+              <span className="text-center text-[12.5px] font-medium leading-tight text-ink-muted">
+                {c.name}
+              </span>
             </div>
           ))}
         </div>

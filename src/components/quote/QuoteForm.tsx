@@ -42,23 +42,24 @@ export function QuoteForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   const [sent, setSent] = useState(false);
 
-  // The "Machines" option leads the service list; picking it reveals the
-  // machine-type field below (populated from the machine categories).
-  const machinesOption = tq('machinesOption');
-  const services = [machinesOption, ...serviceList.map((s) => pick(lc, s.titleAr, s.titleEn))];
+  const services = serviceList.map((s) => pick(lc, s.titleAr, s.titleEn));
   const machineTypes = machineCategories.map((c) => pick(lc, c.titleAr, c.titleEn));
-  const showMachineType = values.service === machinesOption;
+  // "Industrial Machinery" (the machines service) is the single machine option;
+  // selecting it reveals the machine-type field below.
+  const machinesService = serviceList.find((s) => s.id === 'machines');
+  const machinesLabel = machinesService ? pick(lc, machinesService.titleAr, machinesService.titleEn) : '';
+  const showMachineType = !!machinesLabel && values.service === machinesLabel;
   const trust = tq.raw('trust') as string[];
   const trustIcons: IconName[] = ['shield-check', 'clock', 'file-check'];
 
   const set = (key: keyof FormValues) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setValues((v) => ({ ...v, [key]: e.target.value }));
 
-  // When the service changes away from "Machines", clear any chosen machine type
+  // When the service changes away from machinery, clear any chosen machine type
   // so a stale value is never sent.
   const onServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const service = e.target.value;
-    setValues((v) => ({ ...v, service, machineType: service === machinesOption ? v.machineType : '' }));
+    setValues((v) => ({ ...v, service, machineType: service === machinesLabel ? v.machineType : '' }));
   };
 
   const validate = () => {

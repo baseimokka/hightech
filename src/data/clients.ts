@@ -2,13 +2,13 @@ import type { Client } from './types';
 
 /**
  * Client / partner logos rendered in the "Trusted by" strip. `logo` points at
- * a future SVG/PNG wordmark; until supplied the name is shown as text.
+ * the brand logo image; `name` is used as the image alt text.
  */
 export const clients: Client[] = [
-  { id: 'aramco', name: 'ARAMCO', logo: '/images/clients/aramco.svg' },
-  { id: 'arab contractors company', name: 'arab contractors company', logo: '/images/clients/arab contractors company.svg' },
-  { id: 'elsewedy electric', name: 'elsewedy electric', logo: '/images/clients/elsewedy electric.svg' },
-  { id: 'military production factory', name: 'military production factory', logo: '/images/clients/military production factory.svg' },
-  { id: 'zamil', name: 'ZAMIL', logo: '/images/clients/zamil.svg' },
-  { id: 'nesma', name: 'NESMA', logo: '/images/clients/nesma.svg' },
+  { id: 'aramco', name: 'Aramco', logo: '/images/clients/aramco.png' },
+  { id: 'arab-contractors', name: 'Arab Contractors Company', logo: '/images/clients/arab-contractors-company.jpg' },
+  { id: 'elsewedy-electric', name: 'Elsewedy Electric', logo: '/images/clients/elsewedy-electric.jpg' },
+  { id: 'military-production', name: 'Military Production Factory', logo: '/images/clients/military-production-factory.jpg' },
+  { id: 'zamil', name: 'Zamil', logo: '/images/clients/zamil.png' },
+  { id: 'nesma', name: 'Nesma', logo: '/images/clients/nesma.png' },
 ];

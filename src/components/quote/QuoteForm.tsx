@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { services as serviceList, pick } from '@/data';
+import { services as serviceList, machineCategories, pick } from '@/data';
 import { Input } from '@/components/ui/form/Input';
 import { Select } from '@/components/ui/form/Select';
 import { Textarea } from '@/components/ui/form/Textarea';
@@ -19,7 +19,7 @@ interface FormValues {
   phone: string;
   email: string;
   service: string;
-  material: string;
+  machineType: string;
   message: string;
 }
 
@@ -29,7 +29,7 @@ const EMPTY: FormValues = {
   phone: '',
   email: '',
   service: '',
-  material: '',
+  machineType: '',
   message: '',
 };
 
@@ -42,13 +42,24 @@ export function QuoteForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   const [sent, setSent] = useState(false);
 
-  const services = serviceList.map((s) => pick(lc, s.titleAr, s.titleEn));
-  const materials = tq.raw('materials') as string[];
+  // The "Machines" option leads the service list; picking it reveals the
+  // machine-type field below (populated from the machine categories).
+  const machinesOption = tq('machinesOption');
+  const services = [machinesOption, ...serviceList.map((s) => pick(lc, s.titleAr, s.titleEn))];
+  const machineTypes = machineCategories.map((c) => pick(lc, c.titleAr, c.titleEn));
+  const showMachineType = values.service === machinesOption;
   const trust = tq.raw('trust') as string[];
   const trustIcons: IconName[] = ['shield-check', 'clock', 'file-check'];
 
   const set = (key: keyof FormValues) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setValues((v) => ({ ...v, [key]: e.target.value }));
+
+  // When the service changes away from "Machines", clear any chosen machine type
+  // so a stale value is never sent.
+  const onServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const service = e.target.value;
+    setValues((v) => ({ ...v, service, machineType: service === machinesOption ? v.machineType : '' }));
+  };
 
   const validate = () => {
     const next: Partial<Record<keyof FormValues, string>> = {};
@@ -74,7 +85,7 @@ export function QuoteForm() {
           phone: tq('f.phone'),
           email: tq('f.email'),
           service: tq('f.service'),
-          material: tq('f.material'),
+          machineType: tq('f.machineType'),
           message: tq('f.message'),
         },
       },
@@ -143,16 +154,19 @@ export function QuoteForm() {
                 placeholder={tq('ph.service')}
                 options={services}
                 value={values.service}
-                onChange={set('service')}
+                onChange={onServiceChange}
                 error={errors.service}
               />
-              <Select
-                label={tq('f.material')}
-                placeholder={tq('ph.material')}
-                options={materials}
-                value={values.material}
-                onChange={set('material')}
-              />
+              {/* Machine-type field — shown only when "Machines" is the chosen service. */}
+              {showMachineType && (
+                <Select
+                  label={tq('f.machineType')}
+                  placeholder={tq('ph.machineType')}
+                  options={machineTypes}
+                  value={values.machineType}
+                  onChange={set('machineType')}
+                />
+              )}
               <Input
                 label={tq('f.email')}
                 type="email"

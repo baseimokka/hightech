@@ -10,9 +10,9 @@ export const company: Company = {
   nameEn: 'High Tech',
 
   descriptionAr:
-    'بدأنا كورشة صغيرة وكبرنا لنصبح أحد أكبر مصانع تشغيل المعادن في المنطقة، مدعومين بأحدث مكائن CNC والليزر وفريق هندسي لا يقبل بأقل من الكمال.',
+    'تقدم هاي تك أحدث الماكينات الصناعية وقطع الغيار الأصلية، إلى جانب خدمات التركيب والصيانة والدعم الفني وخدمات ما بعد البيع. نعمل على توفير حلول صناعية متكاملة تساعد المصانع على رفع الإنتاجية وتحسين كفاءة التشغيل وتحقيق أعلى مستويات الاعتمادية.',
   descriptionEn:
-    'We started as a small workshop and grew into one of the region’s largest metalworking facilities — backed by the latest CNC and laser machines and an engineering team that won’t settle for less than perfect.',
+    'Hi-Tech delivers advanced industrial machinery, genuine spare parts, and comprehensive engineering services. From equipment supply to installation, maintenance, technical support, and after-sales service, we help manufacturers improve productivity, reliability, and operational efficiency.',
 
   taglineAr: 'دقّة هندسية على مستوى صناعي.',
   taglineEn: 'Precision engineering at industrial scale.',

@@ -7,7 +7,28 @@ import type { Service } from './types';
  */
 export const services: Service[] = [
 
-  
+  {
+  id: 'machines',
+  slug: 'machines',
+  icon: 'factory',
+  image: '/images/services/machines.jpg',
+  titleAr: 'الماكينات الصناعية',
+  titleEn: 'Industrial Machinery',
+  descriptionAr: 'نوفر مجموعة واسعة من الماكينات الصناعية عالية الجودة لتلبية احتياجات مختلف الصناعات، مع ضمان الأداء والاعتمادية.',
+  descriptionEn: 'We supply a wide range of high-quality industrial machinery designed to meet the needs of various industries with reliable performance and durability.',
+  tagAr: 'ماكينات',
+  tagEn: 'Machinery',
+  specificationsAr: [
+    'جودة عالية',
+    'ماركات عالمية',
+    'ضمان معتمد'
+  ],
+  specificationsEn: [
+    'High Quality',
+    'Global Brands',
+    'Warranty Included'
+  ],
+},
   {
     id: 'spare-parts',
     slug: 'spare-parts',
@@ -36,20 +57,6 @@ export const services: Service[] = [
     specificationsAr: ['صيانة وقائية', 'طوارئ 24/7', 'قطع أصلية'],
     specificationsEn: ['Preventive', '24/7 callout', 'OEM parts'],
   },
-  {
-  id: 'training',
-  slug: 'training',
-  icon: 'graduation-cap',
-  image: '/images/services/training.jpg',
-  titleAr: 'التدريب',
-  titleEn: 'Training',
-  descriptionAr: 'برامج تدريب عملية ومتخصصة لتطوير مهارات الفرق الفنية والمهندسين على أحدث التقنيات الصناعية.',
-  descriptionEn: 'Practical and specialized training programs to enhance the skills of engineers and technical teams using the latest industrial technologies.',
-  tagAr: 'تدريب',
-  tagEn: 'Training',
-  specificationsAr: ['تدريب عملي', 'ورش عمل', 'شهادات إتمام'],
-  specificationsEn: ['Hands-on Training', 'Workshops', 'Completion Certificates'],
-},
   {
   id: 'consulting',
   slug: 'consulting',

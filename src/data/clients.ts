@@ -6,9 +6,9 @@ import type { Client } from './types';
  */
 export const clients: Client[] = [
   { id: 'aramco', name: 'ARAMCO', logo: '/images/clients/aramco.svg' },
-  { id: 'sabic', name: 'SABIC', logo: '/images/clients/sabic.svg' },
-  { id: 'alfanar', name: 'ALFANAR', logo: '/images/clients/alfanar.svg' },
-  { id: 'maaden', name: 'MAADEN', logo: '/images/clients/maaden.svg' },
+  { id: 'arab contractors company', name: 'arab contractors company', logo: '/images/clients/arab contractors company.svg' },
+  { id: 'elsewedy electric', name: 'elsewedy electric', logo: '/images/clients/elsewedy electric.svg' },
+  { id: 'military production factory', name: 'military production factory', logo: '/images/clients/military production factory.svg' },
   { id: 'zamil', name: 'ZAMIL', logo: '/images/clients/zamil.svg' },
   { id: 'nesma', name: 'NESMA', logo: '/images/clients/nesma.svg' },
 ];

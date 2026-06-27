@@ -14,17 +14,17 @@
     "whatsapp": "WhatsApp",
     "services": "Our Services",
     "portfolio": "View Portfolio",
-    "machines": "See Machines",
+    "machines": "Explore Machines",
     "learn": "Learn more",
     "send": "Send Request",
     "call": "Call Now"
   },
   "hero": {
-    "eyebrow": "CNC · LASER CUTTING · METAL FABRICATION",
-    "title": "Precision Engineering at Industrial Scale",
-    "sub": "Laser cutting, CNC machining, spare parts and metal fabrication — from prototype to high-volume production, delivered on time to the highest quality.",
+    "eyebrow": "Industrial Machinery • Spare Parts • Technical Support",
+    "title": "Your Trusted Partner in Industrial Machinery & Spare Parts",
+    "sub": "Hi-Tech provides integrated industrial solutions through premium machinery, genuine spare parts, and expert technical support.",
     "mediaCaption": "CNC machine in action — hero video",
-    "badges": ["ISO 9001:2015", "±0.02 MM", "25+ YEARS"]
+    "badges": ["ISO 9001:2015", "±0.02 MM", "10+ YEARS"]
   },
   "services": {
     "eyebrow": "What we do",
@@ -86,20 +86,20 @@
       "phone": "Phone number",
       "email": "Email",
       "service": "Service required",
-      "material": "Material",
+      "machineType": "Machine type",
       "message": "Project details",
       "file": "Attach drawings (optional)"
     },
     "ph": {
       "name": "e.g. Ahmed Al Mansoori",
       "company": "Company name",
-      "phone": "+966 5x xxx xxxx",
+      "phone": "+20xx xxxx xxxx",
       "email": "name@company.com",
       "service": "Select a service",
-      "material": "Select material",
+      "machineType": "Select machine type",
       "message": "Material, quantity, tolerances, deadline…"
     },
-    "materials": ["Mild Steel", "Stainless Steel", "Aluminium", "Brass", "Copper"],
+    "machinesOption": "Machines",
     "or": "Or message us now",
     "whatsappLead": "Most of our clients prefer WhatsApp for the fastest response.",
     "fileHelper": "PDF · DWG · DXF · STEP — max 25 MB each",
@@ -164,7 +164,7 @@
     },
     "about": {
       "title": "About — High Tech",
-      "description": "Twenty-five years of precision metalworking, backed by the latest CNC and laser machines."
+      "description": "More Than 10 Years of Trusted Industrial Solutions"
     },
     "services": {
       "title": "Services — High Tech",

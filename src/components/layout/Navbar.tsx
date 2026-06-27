@@ -57,7 +57,9 @@ export function Navbar() {
       <div className="container-page flex h-[72px] items-center gap-6">
         <Link href={routes.home} className="inline-flex items-center" aria-label={t('nav.home')}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.svg" alt={site.name} className="h-[34px] w-auto" />
+          {/* Dark-background lockup (red monogram + white wordmark) so the logo stays
+              crisp over the dark, translucent header — see public/logo-nav.svg. */}
+          <img src="/logo-nav.svg" alt={site.name} className="h-[38px] w-auto" />
         </Link>
 
         <nav className="hidden lg:flex gap-1 ms-auto">

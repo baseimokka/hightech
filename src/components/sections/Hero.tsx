@@ -1,6 +1,5 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/Button';
-import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { Badge } from '@/components/ui/Badge';
 import { StatCard } from '@/components/ui/StatCard';
 import Image from 'next/image';
@@ -79,9 +78,15 @@ export function Hero() {
               >
                 {t('cta.quote')}
               </Button>
-              <WhatsAppButton size="lg" message={t('hero.title')} className="max-sm:w-full max-sm:flex">
-                {t('cta.whatsapp')}
-              </WhatsAppButton>
+              <Button
+                href={routes.machines}
+                variant="outline-invert"
+                size="lg"
+                className="max-sm:w-full max-sm:flex"
+                iconRight={<Icon name="arrow-right" size={18} className="rtl:rotate-180" />}
+              >
+                {t('cta.machines')}
+              </Button>
             </div>
           </Reveal>
           <Reveal delay={0.2}>

@@ -1,0 +1,15 @@
+<svg width="430" height="96" viewBox="0 0 430 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="High Tech — CNC Machine &amp; CNC Spare Parts">
+  <!-- Navbar / dark-background lockup: brand-red monogram with a white wordmark
+       so the logo stays legible over the dark, translucent header. -->
+  <g transform="translate(0,-12)">
+    <circle cx="60" cy="61" r="47" fill="none" stroke="#e10600" stroke-width="8.5" stroke-dasharray="245 50" stroke-dashoffset="24" stroke-linecap="butt" transform="rotate(125 60 61)"></circle>
+    <rect x="34" y="38" width="9" height="46" fill="#e10600"></rect>
+    <rect x="55" y="38" width="9" height="46" fill="#e10600"></rect>
+    <rect x="34" y="56" width="30" height="9" fill="#e10600"></rect>
+    <rect x="59" y="38" width="33" height="9" fill="#e10600"></rect>
+    <rect x="78" y="38" width="9" height="46" fill="#e10600"></rect>
+  </g>
+  <line x1="128" y1="22" x2="128" y2="74" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"></line>
+  <text x="146" y="50" font-family="'IBM Plex Sans Arabic','Segoe UI',sans-serif" font-size="30" font-weight="700" letter-spacing="6" fill="#ffffff">HIGH TECH</text>
+  <text x="147" y="74" font-family="'IBM Plex Mono',monospace" font-size="10.5" font-weight="500" letter-spacing="2.4" fill="#c2c8d0">CNC MACHINE &amp; CNC SPARE PARTS</text>
+</svg>

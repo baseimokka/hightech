@@ -18,7 +18,7 @@ export default function NotFound() {
       style={{ minHeight: '60vh', paddingInline: 'var(--gutter)' }}
     >
       <span className="font-mono text-brand tracking-[0.2em] text-sm">ERROR 404</span>
-      <h1 className="m-0 font-display text-display-2 font-bold leading-[1.1] max-sm:leading-[1.18] tracking-tighter2 text-ink-strong">
+      <h1 className="m-0 font-display text-display-2 font-bold tracking-tighter2 text-ink-strong">
         {ar ? 'الصفحة غير موجودة' : 'Page not found'}
       </h1>
       <p className="m-0 max-w-[460px] text-[var(--fs-lg)] text-ink-muted">

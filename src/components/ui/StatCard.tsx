@@ -18,7 +18,7 @@ export function StatCard({ value, label, suffix, invert = false, align = 'start'
     >
       <span
         className={cn(
-          'flex items-baseline gap-0.5 font-display text-display-2 font-bold tracking-tighter2 leading-none max-sm:leading-[1.15]',
+          'flex items-baseline gap-0.5 font-display text-display-2 font-bold tracking-tighter2 leading-none',
           invert ? 'text-white' : 'text-ink-strong',
         )}
       >

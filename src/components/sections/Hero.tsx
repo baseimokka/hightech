@@ -65,10 +65,7 @@ export function Hero() {
             </span>
           </Reveal>
           <Reveal delay={0.05}>
-            {/* Tight 1.08 leading suits the short desktop wrap, but on phone the title
-                wraps to 3–4 lines and the tight leading clips descenders / Arabic
-                ascenders against the line below — give it more room on mobile. */}
-            <h1 className="m-0 font-display text-[clamp(2rem,1.3rem+3vw,3.5rem)] font-bold leading-[1.08] max-sm:leading-[1.18] tracking-tighter2 text-white text-balance">
+            <h1 className="m-0 font-display text-[clamp(2rem,1.3rem+3vw,3.5rem)] font-bold leading-[1.08] tracking-tighter2 text-white text-balance">
               {t('hero.title')}
             </h1>
           </Reveal>

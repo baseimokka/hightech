@@ -31,7 +31,7 @@ export function SectionHeading({
       {eyebrow && <span className="eyebrow">{eyebrow}</span>}
       <Title
         className={cn(
-          'm-0 font-display text-display-3 font-bold leading-[1.2] max-sm:leading-[1.3] tracking-tight text-balance',
+          'm-0 font-display text-display-3 font-bold leading-[1.2] tracking-tight text-balance',
           invert ? 'text-white' : 'text-ink-strong',
         )}
       >

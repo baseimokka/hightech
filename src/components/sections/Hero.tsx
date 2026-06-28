@@ -19,7 +19,7 @@ export function Hero() {
       : 'linear-gradient(90deg, rgba(10,12,15,0.94) 0%, rgba(10,12,15,0.78) 45%, rgba(10,12,15,0.35) 100%)';
 
   return (
-    <div className="relative overflow-hidden bg-bg-dark max-sm:flex max-sm:flex-col max-sm:justify-end max-sm:min-h-[calc(100svh_-_72px)]">
+    <div className="relative overflow-hidden bg-bg-dark max-sm:flex max-sm:flex-col max-sm:justify-end max-sm:min-h-[70svh]">
       {/* Mobile (<640px): the photo is the full-bleed Hero background (one cohesive section);
           the laser/sparks focal point shows in the open upper area and the text sits near the
           bottom over a gradient. Desktop/tablet (>=640px): original full-bleed background — unchanged. */}
@@ -50,9 +50,10 @@ export function Hero() {
         />
       </div>
 
-      {/* On mobile the content is anchored to the bottom of the full-screen Hero (root
-          justify-end); z-10 keeps it above the image. Tablet/desktop keep the original
-          clamp padding untouched. */}
+      {/* On mobile the content is anchored to the bottom of the Hero (root justify-end);
+          z-10 keeps it above the image. The section is 70svh tall (not full-screen) so the
+          wide 2.4:1 photo is cropped less and reads less zoomed-in. Tablet/desktop keep the
+          original clamp padding untouched. */}
       <div className="container-page relative z-10 max-sm:!pt-7 max-sm:!pb-9" style={{ paddingBlock: 'clamp(4rem,3rem+6vw,7.5rem)' }}>
         <div className="flex max-w-[680px] flex-col gap-[26px] max-sm:gap-7">
           <Reveal>

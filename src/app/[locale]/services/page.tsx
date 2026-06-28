@@ -78,7 +78,7 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
                     <span className="font-mono text-[13px] tracking-[0.18em] text-brand">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <h2 className="m-0 font-display text-display-3 font-bold tracking-tight text-ink-strong">
+                    <h2 className="m-0 font-display text-display-3 font-bold leading-[1.2] max-sm:leading-[1.3] tracking-tight text-ink-strong">
                       {pick(lc, s.titleAr, s.titleEn)}
                     </h2>
                     <p className="m-0 text-[var(--fs-lg)] leading-[1.6] text-ink-muted">

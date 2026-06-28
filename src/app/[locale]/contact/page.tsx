@@ -7,6 +7,10 @@ import { Badge } from '@/components/ui/Badge';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Reveal } from '@/components/ui/Reveal';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { buildMetadata, localePath } from '@/lib/seo';
+import { breadcrumbSchema, webPageSchema } from '@/lib/jsonld';
+import { routes } from '@/config/site';
 import { contact, pick } from '@/data';
 
 export async function generateMetadata({
@@ -15,13 +19,33 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta.contact' });
-  return { title: t('title'), description: t('description') };
+  return buildMetadata({
+    locale,
+    path: routes.contact,
+    title: t('title'),
+    description: t('description'),
+    keywords: t.raw('keywords') as string[],
+  });
 }
 
 export default function ContactPage({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);
   const t = useTranslations();
   const lc = useLocale();
+
+  const structuredData = [
+    webPageSchema({
+      type: 'ContactPage',
+      locale: lc,
+      path: routes.contact,
+      name: t('meta.contact.title'),
+      description: t('meta.contact.description'),
+    }),
+    breadcrumbSchema([
+      { name: t('nav.home'), path: localePath(routes.home, lc) },
+      { name: t('nav.contact'), path: localePath(routes.contact, lc) },
+    ]),
+  ];
 
   const items: Array<{ icon: IconName; label: string; value: string; href: string }> = [
     { icon: 'phone', label: t('contact.phone'), value: contact.phone, href: `tel:+${contact.whatsapp}` },
@@ -37,6 +61,7 @@ export default function ContactPage({ params: { locale } }: { params: { locale: 
 
   return (
     <div>
+      <JsonLd data={structuredData} />
       <PageHeader
         eyebrow={t('contact.eyebrow')}
         title={t('contact.title')}
@@ -75,34 +100,18 @@ export default function ContactPage({ params: { locale } }: { params: { locale: 
             </div>
           </div>
 
-          {/* Map placeholder */}
+          {/* Live Google Map centred on the High Tech location (Qalyub, Egypt). */}
           <Reveal delay={0.05}>
-            <div
-              className="relative overflow-hidden rounded-md border border-hairline min-h-[440px]"
-              style={{ background: 'linear-gradient(135deg,#e9edf1,#dfe4ea)' }}
-            >
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    'repeating-linear-gradient(0deg, rgba(120,131,143,0.18) 0 1px, transparent 1px 44px), repeating-linear-gradient(90deg, rgba(120,131,143,0.18) 0 1px, transparent 1px 44px)',
-                }}
+            <div className="relative overflow-hidden rounded-md border border-hairline min-h-[440px]">
+              <iframe
+                title={t('contact.mapCaption')}
+                src={`https://www.google.com/maps?q=30.175944,31.224333&z=16&hl=${lc === 'ar' ? 'ar' : 'en'}&output=embed`}
+                className="absolute inset-0 h-full w-full"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
               />
-              <div
-                className="absolute flex flex-col items-center gap-1"
-                style={{ top: '46%', insetInlineStart: '40%' }}
-              >
-                <Icon name="map-pin" size={40} className="text-brand" />
-                <span className="font-mono text-[11px] bg-steel-950 text-white px-2 py-1 rounded tracking-[0.1em]">
-                  HIGH TECH
-                </span>
-              </div>
-              <span
-                className="absolute font-mono text-[11px] tracking-[0.14em] uppercase text-steel-500"
-                style={{ insetInlineStart: 16, bottom: 14 }}
-              >
-                {t('contact.mapCaption')}
-              </span>
             </div>
           </Reveal>
         </div>

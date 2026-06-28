@@ -13,6 +13,7 @@ export { contact } from './contact';
 export { statistics } from './statistics';
 export { services, detailedServices } from './services';
 export { clients } from './clients';
+export { certifications } from './certifications';
 export {
   projects,
   projectCategories,

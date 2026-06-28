@@ -74,6 +74,11 @@
       "factory": "Factory",
       "cncBay": "CNC bay",
       "laserCell": "Laser cell"
+    },
+    "certs": {
+      "eyebrow": "Certifications",
+      "title": "Certified to international standards",
+      "sub": "Our quality systems and processes are independently certified and audited."
     }
   },
   "quote": {
@@ -86,7 +91,8 @@
       "phone": "Phone number",
       "email": "Email",
       "service": "Service required",
-      "machineType": "Machine type",
+      "machineType": "Machine category",
+      "machine": "Machine",
       "message": "Project details",
       "file": "Attach drawings (optional)"
     },
@@ -96,7 +102,8 @@
       "phone": "+20xx xxxx xxxx",
       "email": "name@company.com",
       "service": "Select a service",
-      "machineType": "Select machine type",
+      "machineType": "Select machine category",
+      "machine": "Select a machine",
       "message": "Material, quantity, tolerances, deadline…"
     },
     "or": "Or message us now",
@@ -159,36 +166,46 @@
   "meta": {
     "home": {
       "title": "High Tech — CNC Machining, Laser Cutting & Metal Fabrication",
-      "description": "Precision engineering at industrial scale: laser cutting, CNC machining, spare parts and metal fabrication. Request a quote on WhatsApp."
+      "description": "Precision engineering at industrial scale: laser cutting, CNC machining, spare parts and metal fabrication. Request a quote on WhatsApp.",
+      "keywords": ["industrial machinery", "CNC machining", "laser cutting", "metal fabrication", "spare parts", "sheet metal cutting", "fiber laser", "Egypt", "High Tech"]
     },
     "about": {
-      "title": "About — High Tech",
-      "description": "More Than 10 Years of Trusted Industrial Solutions"
+      "title": "About",
+      "description": "More Than 10 Years of Trusted Industrial Solutions",
+      "keywords": ["about High Tech", "industrial solutions", "CNC company Egypt", "ISO 9001 certified", "metalworking company"]
     },
     "services": {
-      "title": "Services — High Tech",
-      "description": "Fiber laser cutting, 5-axis CNC machining, spare parts, maintenance and technical support to ISO 9001 standards."
+      "title": "Services",
+      "description": "Fiber laser cutting, 5-axis CNC machining, spare parts, maintenance and technical support to ISO 9001 standards.",
+      "keywords": ["CNC machining services", "fiber laser cutting", "metal fabrication", "spare parts supply", "industrial maintenance", "technical support", "consulting"]
     },
     "machines": {
-      "title": "Machines — High Tech",
-      "description": "High Tech's fleet of CNC, laser and industrial machines with detailed specifications and features."
+      "title": "Machines",
+      "description": "High Tech's fleet of CNC, laser and industrial machines with detailed specifications and features.",
+      "keywords": ["CNC machines", "fiber laser machine", "CO2 laser", "CNC lathe", "press brake", "industrial equipment", "machinery catalogue"]
     },
     "portfolio": {
-      "title": "Portfolio — High Tech",
-      "description": "A sample of the laser cutting, CNC machining and metal fabrication projects we’ve delivered."
+      "title": "Portfolio",
+      "description": "A sample of the laser cutting, CNC machining and metal fabrication projects we’ve delivered.",
+      "keywords": ["portfolio", "CNC projects", "laser cutting projects", "metal fabrication projects", "case studies"]
     },
     "quote": {
-      "title": "Request a Quote — High Tech",
-      "description": "Send your drawings (DXF · DWG · PDF) and get an accurate quote within 2 hours on WhatsApp."
+      "title": "Request a Quote",
+      "description": "Send your drawings (DXF · DWG · PDF) and get an accurate quote within 2 hours on WhatsApp.",
+      "keywords": ["request a quote", "CNC quote", "laser cutting quote", "metal fabrication quote", "DXF DWG STEP", "machining estimate"]
     },
     "contact": {
-      "title": "Contact — High Tech",
-      "description": "Get in touch with the High Tech team by phone, email or WhatsApp for quotes and technical questions."
+      "title": "Contact",
+      "description": "Get in touch with the High Tech team by phone, email or WhatsApp for quotes and technical questions.",
+      "keywords": ["contact High Tech", "industrial machinery Egypt", "CNC support", "Qalyub", "request information"]
     }
   },
   "a11y": {
     "menu": "Menu",
     "switchLang": "Switch to Arabic",
-    "whatsapp": "Chat on WhatsApp"
+    "whatsapp": "Chat on WhatsApp",
+    "skipToContent": "Skip to main content",
+    "followOn": "Follow us on {platform}",
+    "home": "High Tech — home"
   }
 }

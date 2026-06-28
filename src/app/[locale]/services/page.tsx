@@ -9,8 +9,11 @@ import { Button } from '@/components/ui/Button';
 import { MediaFrame } from '@/components/ui/MediaFrame';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Reveal } from '@/components/ui/Reveal';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { buildMetadata, localePath } from '@/lib/seo';
+import { breadcrumbSchema, servicesSchema } from '@/lib/jsonld';
 import { routes } from '@/config/site';
-import { detailedServices, pick, pickList } from '@/data';
+import { services, detailedServices, pick, pickList } from '@/data';
 import { resolveMedia } from '@/lib/media';
 import { cn } from '@/lib/cn';
 
@@ -20,7 +23,13 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta.services' });
-  return { title: t('title'), description: t('description') };
+  return buildMetadata({
+    locale,
+    path: routes.services,
+    title: t('title'),
+    description: t('description'),
+    keywords: t.raw('keywords') as string[],
+  });
 }
 
 export default function ServicesPage({ params: { locale } }: { params: { locale: string } }) {
@@ -28,8 +37,17 @@ export default function ServicesPage({ params: { locale } }: { params: { locale:
   const t = useTranslations();
   const lc = useLocale();
 
+  const structuredData = [
+    servicesSchema(lc, services),
+    breadcrumbSchema([
+      { name: t('nav.home'), path: localePath(routes.home, lc) },
+      { name: t('nav.services'), path: localePath(routes.services, lc) },
+    ]),
+  ];
+
   return (
     <div>
+      <JsonLd data={structuredData} />
       <PageHeader
         eyebrow={t('services.eyebrow')}
         title={t('services.title')}

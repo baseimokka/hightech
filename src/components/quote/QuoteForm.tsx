@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { services as serviceList, machineCategories, pick } from '@/data';
+import { services as serviceList, machineCategories, getMachinesByCategory, pick } from '@/data';
 import { Input } from '@/components/ui/form/Input';
 import { Select } from '@/components/ui/form/Select';
 import { Textarea } from '@/components/ui/form/Textarea';
@@ -20,6 +20,7 @@ interface FormValues {
   email: string;
   service: string;
   machineType: string;
+  machine: string;
   message: string;
 }
 
@@ -30,6 +31,7 @@ const EMPTY: FormValues = {
   email: '',
   service: '',
   machineType: '',
+  machine: '',
   message: '',
 };
 
@@ -45,21 +47,41 @@ export function QuoteForm() {
   const services = serviceList.map((s) => pick(lc, s.titleAr, s.titleEn));
   const machineTypes = machineCategories.map((c) => pick(lc, c.titleAr, c.titleEn));
   // "Industrial Machinery" (the machines service) is the single machine option;
-  // selecting it reveals the machine-type field below.
+  // selecting it reveals the machine-category field, which in turn reveals the
+  // list of machines in that category.
   const machinesService = serviceList.find((s) => s.id === 'machines');
   const machinesLabel = machinesService ? pick(lc, machinesService.titleAr, machinesService.titleEn) : '';
   const showMachineType = !!machinesLabel && values.service === machinesLabel;
+
+  // Machines belonging to the currently selected category.
+  const selectedCategory = machineCategories.find((c) => pick(lc, c.titleAr, c.titleEn) === values.machineType);
+  const machinesInCategory = selectedCategory
+    ? getMachinesByCategory(selectedCategory.slug).map((m) => pick(lc, m.nameAr, m.nameEn))
+    : [];
+  const showMachine = showMachineType && machinesInCategory.length > 0;
+
   const trust = tq.raw('trust') as string[];
   const trustIcons: IconName[] = ['shield-check', 'clock', 'file-check'];
 
   const set = (key: keyof FormValues) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setValues((v) => ({ ...v, [key]: e.target.value }));
 
-  // When the service changes away from machinery, clear any chosen machine type
-  // so a stale value is never sent.
+  // Changing the service away from machinery clears the machine category + machine.
   const onServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const service = e.target.value;
-    setValues((v) => ({ ...v, service, machineType: service === machinesLabel ? v.machineType : '' }));
+    const keep = service === machinesLabel;
+    setValues((v) => ({
+      ...v,
+      service,
+      machineType: keep ? v.machineType : '',
+      machine: keep ? v.machine : '',
+    }));
+  };
+
+  // Changing the category clears the previously chosen machine.
+  const onMachineTypeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const machineType = e.target.value;
+    setValues((v) => ({ ...v, machineType, machine: '' }));
   };
 
   const validate = () => {
@@ -87,6 +109,7 @@ export function QuoteForm() {
           email: tq('f.email'),
           service: tq('f.service'),
           machineType: tq('f.machineType'),
+          machine: tq('f.machine'),
           message: tq('f.message'),
         },
       },
@@ -158,14 +181,24 @@ export function QuoteForm() {
                 onChange={onServiceChange}
                 error={errors.service}
               />
-              {/* Machine-type field — shown only when "Machines" is the chosen service. */}
+              {/* Machine category — shown only when "Industrial Machinery" is the chosen service. */}
               {showMachineType && (
                 <Select
                   label={tq('f.machineType')}
                   placeholder={tq('ph.machineType')}
                   options={machineTypes}
                   value={values.machineType}
-                  onChange={set('machineType')}
+                  onChange={onMachineTypeChange}
+                />
+              )}
+              {/* Machine — the available machines in the chosen category. */}
+              {showMachine && (
+                <Select
+                  label={tq('f.machine')}
+                  placeholder={tq('ph.machine')}
+                  options={machinesInCategory}
+                  value={values.machine}
+                  onChange={set('machine')}
                 />
               )}
               <Input

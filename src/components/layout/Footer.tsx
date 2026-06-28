@@ -30,9 +30,9 @@ export function Footer() {
   const t = useTranslations();
   const locale = useLocale();
 
-  const socials: Array<{ name: IconName; href: string }> = [
-    { name: 'facebook', href: company.social.facebook },
-    { name: 'instagram', href: company.social.instagram },
+  const socials: Array<{ name: IconName; label: string; href: string }> = [
+    { name: 'facebook', label: 'Facebook', href: company.social.facebook },
+    { name: 'instagram', label: 'Instagram', href: company.social.instagram },
   ];
 
   return (
@@ -50,7 +50,9 @@ export function Footer() {
                 <a
                   key={s.name}
                   href={s.href}
-                  aria-label={s.name}
+                  aria-label={t('a11y.followOn', { platform: s.label })}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center w-[38px] h-[38px] rounded-sm border border-hairline-dark text-steel-300 hover:text-white hover:border-steel-500 transition-colors"
                 >
                   <Icon name={s.name} size={17} />

@@ -5,7 +5,7 @@
  */
 export const site = {
   name: 'High Tech',
-  domain: 'https://hightech.sa',
+  domain: 'https://www.hightech-cnc.com',
 } as const;
 
 /**

@@ -10,6 +10,9 @@ import { MediaFrame } from '@/components/ui/MediaFrame';
 import { Button } from '@/components/ui/Button';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Reveal } from '@/components/ui/Reveal';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { buildMetadata } from '@/lib/seo';
+import { websiteSchema } from '@/lib/jsonld';
 import { ENABLE_PORTFOLIO, routes } from '@/config/site';
 import {
   company,
@@ -29,7 +32,14 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta.home' });
-  return { title: t('title'), description: t('description') };
+  return buildMetadata({
+    locale,
+    path: '/',
+    absoluteTitle: true,
+    title: t('title'),
+    description: t('description'),
+    keywords: t.raw('keywords') as string[],
+  });
 }
 
 export default function HomePage({ params: { locale } }: { params: { locale: string } }) {
@@ -49,6 +59,7 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
 
   return (
     <div>
+      <JsonLd data={websiteSchema(lc)} />
       <Hero />
 
       {/* Services overview */}
@@ -184,8 +195,11 @@ export default function HomePage({ params: { locale } }: { params: { locale: str
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={c.logo}
-                  alt={c.name}
+                  alt={`${c.name} logo`}
+                  width={c.width}
+                  height={c.height}
                   loading="lazy"
+                  decoding="async"
                   className="max-h-[56px] max-w-[78%] w-auto object-contain"
                 />
               </div>

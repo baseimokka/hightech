@@ -1,6 +1,12 @@
+import type { Metadata } from 'next';
 import { useLocale } from 'next-intl';
 import { Button } from '@/components/ui/Button';
 import { routes } from '@/config/site';
+
+export const metadata: Metadata = {
+  title: 'Page not found',
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   const locale = useLocale();

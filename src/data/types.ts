@@ -107,6 +107,22 @@ export interface Client {
   id: string;
   name: string;
   logo: string;
+  /** Intrinsic pixel dimensions of the logo — declared on <img> to avoid CLS. */
+  width: number;
+  height: number;
+}
+
+export interface Certification {
+  id: string;
+  /** Path to the certification logo image. */
+  logo: string;
+  /** Intrinsic pixel dimensions of the logo — declared on <img> to avoid CLS. */
+  width: number;
+  height: number;
+  titleAr: string;
+  titleEn: string;
+  descriptionAr: string;
+  descriptionEn: string;
 }
 
 export type ProjectCategoryKey = 'laser' | 'cnc' | 'fabrication';

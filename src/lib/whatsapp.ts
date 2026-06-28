@@ -26,6 +26,7 @@ export interface QuoteFields {
   email?: string;
   service?: string;
   machineType?: string;
+  machine?: string;
   message?: string;
   files?: string[];
 }
@@ -40,6 +41,7 @@ export interface QuoteLabels {
     email: string;
     service: string;
     machineType: string;
+    machine: string;
     message: string;
   };
 }
@@ -58,6 +60,7 @@ export function buildQuoteMessage(fields: QuoteFields, labels: QuoteLabels): str
   row(labels.f.email, fields.email);
   row(labels.f.service, fields.service);
   row(labels.f.machineType, fields.machineType);
+  row(labels.f.machine, fields.machine);
 
   if (fields.message && fields.message.trim()) {
     lines.push('', `${labels.f.message}:`, fields.message.trim());

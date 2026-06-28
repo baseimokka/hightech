@@ -62,11 +62,12 @@ export function Navbar() {
           <img src="/logo-nav.svg" alt={site.name} className="h-[38px] w-auto" />
         </Link>
 
-        <nav className="hidden lg:flex gap-1 ms-auto">
+        <nav className="hidden lg:flex gap-1 ms-auto" aria-label={t('a11y.menu')}>
           {NAV.map(({ key, href }) => (
             <Link
               key={key}
               href={href}
+              aria-current={isActive(href) ? 'page' : undefined}
               className={cn(
                 'px-3.5 py-2 font-display text-[14.5px] font-medium rounded-sm transition-colors duration-200',
                 isActive(href)
@@ -105,11 +106,12 @@ export function Navbar() {
           open ? 'max-h-[480px] border-t border-hairline-dark' : 'max-h-0',
         )}
       >
-        <div className="px-[var(--gutter)] pt-3 pb-5 flex flex-col gap-1">
+        <nav className="px-[var(--gutter)] pt-3 pb-5 flex flex-col gap-1" aria-label={t('a11y.menu')}>
           {NAV.map(({ key, href }) => (
             <Link
               key={key}
               href={href}
+              aria-current={isActive(href) ? 'page' : undefined}
               className={cn(
                 'px-3 py-3.5 font-display text-[17px] font-semibold no-underline border-b border-hairline-dark',
                 isActive(href) ? 'text-red-300' : 'text-white',
@@ -123,7 +125,7 @@ export function Navbar() {
               {t('cta.quote')}
             </Button>
           </div>
-        </div>
+        </nav>
       </div>
     </header>
   );

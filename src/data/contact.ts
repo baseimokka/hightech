@@ -16,5 +16,5 @@ export const contact: ContactInfo = {
   hoursAr: 'الأحد – الخميس · 8 ص – 6 م',
   hoursEn: 'Sun – Thu · 8 AM – 6 PM',
 
-  googleMapsUrl: 'https://maps.app.goo.gl/reYGV9omvUugy3EeA',
+  googleMapsUrl: 'https://maps.app.goo.gl/KsvjdDwiRoTg6YoF8',
 };

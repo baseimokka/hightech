@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { FinalCta } from '@/components/sections/FinalCta';
 import { Section } from '@/components/ui/Section';
@@ -10,6 +10,9 @@ import { Button } from '@/components/ui/Button';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import { MediaFrame } from '@/components/ui/MediaFrame';
 import { Icon, type IconName } from '@/components/ui/Icon';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { buildMetadata, localePath } from '@/lib/seo';
+import { breadcrumbSchema, machineProductSchema } from '@/lib/jsonld';
 import { routes } from '@/config/site';
 import { machines, getMachine, getMachineCategory, pick, pickList } from '@/data';
 import { resolveMedia } from '@/lib/media';
@@ -24,11 +27,19 @@ export async function generateMetadata({
   params: { locale: string; slug: string };
 }): Promise<Metadata> {
   const machine = getMachine(slug);
-  if (!machine) return {};
-  return {
-    title: `${pick(locale, machine.nameAr, machine.nameEn)} — High Tech`,
+  if (!machine) {
+    return { title: 'Machine not found', robots: { index: false, follow: false } };
+  }
+  const name = pick(locale, machine.nameAr, machine.nameEn);
+  const category = getMachineCategory(machine.category);
+  const categoryLabel = category ? pick(locale, category.titleAr, category.titleEn) : '';
+  return buildMetadata({
+    locale,
+    path: `${routes.machines}/${slug}`,
+    title: name,
     description: pick(locale, machine.descriptionAr, machine.descriptionEn),
-  };
+    keywords: [name, categoryLabel, 'CNC', 'High Tech'].filter(Boolean),
+  });
 }
 
 export default function MachineDetailPage({
@@ -39,6 +50,7 @@ export default function MachineDetailPage({
   setRequestLocale(locale);
   const t = useTranslations('machines');
   const tc = useTranslations('cta');
+  const tn = useTranslations('nav');
   const lc = useLocale();
 
   const machine = getMachine(slug);
@@ -51,9 +63,20 @@ export default function MachineDetailPage({
   const description = pick(lc, machine.descriptionAr, machine.descriptionEn);
   const features = pickList(lc, machine.featuresAr, machine.featuresEn);
   const active = machine.status === 'active';
+  const heroImage = resolveMedia(machine.image);
+
+  const structuredData = [
+    machineProductSchema({ locale: lc, machine, category, image: heroImage }),
+    breadcrumbSchema([
+      { name: tn('home'), path: localePath(routes.home, lc) },
+      { name: tn('machines'), path: localePath(routes.machines, lc) },
+      { name, path: localePath(`${routes.machines}/${machine.slug}`, lc) },
+    ]),
+  ];
 
   return (
     <div>
+      <JsonLd data={structuredData} />
       {/* Dark header band */}
       <div className="bg-bg-dark" style={{ paddingBlock: 'var(--section-y-tight)', paddingInline: 'var(--gutter)' }}>
         <div className="mx-auto w-full max-w-container flex flex-col gap-5">
@@ -90,7 +113,7 @@ export default function MachineDetailPage({
               caption={categoryLabel}
               icon={icon}
               ratio="4 / 3"
-              src={resolveMedia(machine.image)}
+              src={heroImage}
               alt={name}
               sizes="(max-width: 1024px) 100vw, 50vw"
             />

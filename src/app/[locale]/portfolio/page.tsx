@@ -6,9 +6,10 @@ import { PageHeader } from '@/components/sections/PageHeader';
 import { FinalCta } from '@/components/sections/FinalCta';
 import { Section } from '@/components/ui/Section';
 import { PortfolioGallery } from '@/components/portfolio/PortfolioGallery';
-import { ENABLE_PORTFOLIO } from '@/config/site';
+import { ENABLE_PORTFOLIO, routes } from '@/config/site';
 import { projects } from '@/data';
 import { resolveMediaMap } from '@/lib/media';
+import { buildMetadata } from '@/lib/seo';
 
 export async function generateMetadata({
   params: { locale },
@@ -16,7 +17,14 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta.portfolio' });
-  return { title: t('title'), description: t('description') };
+  // Portfolio is temporarily disabled (returns 404) — keep it out of the index.
+  return buildMetadata({
+    locale,
+    path: routes.portfolio,
+    title: t('title'),
+    description: t('description'),
+    index: ENABLE_PORTFOLIO,
+  });
 }
 
 export default function PortfolioPage({ params: { locale } }: { params: { locale: string } }) {

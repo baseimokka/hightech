@@ -4,11 +4,16 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { PageHeader } from '@/components/sections/PageHeader';
 import { FinalCta } from '@/components/sections/FinalCta';
 import { Section } from '@/components/ui/Section';
+import { SectionHeading } from '@/components/ui/SectionHeading';
 import { StatCard } from '@/components/ui/StatCard';
 import { MediaFrame } from '@/components/ui/MediaFrame';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Reveal } from '@/components/ui/Reveal';
-import { company, statistics, pick } from '@/data';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { buildMetadata, localePath } from '@/lib/seo';
+import { breadcrumbSchema, webPageSchema } from '@/lib/jsonld';
+import { routes } from '@/config/site';
+import { company, statistics, certifications, pick } from '@/data';
 
 export async function generateMetadata({
   params: { locale },
@@ -16,13 +21,33 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'meta.about' });
-  return { title: t('title'), description: t('description') };
+  return buildMetadata({
+    locale,
+    path: routes.about,
+    title: t('title'),
+    description: t('description'),
+    keywords: t.raw('keywords') as string[],
+  });
 }
 
 export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale);
   const t = useTranslations();
   const lc = useLocale();
+
+  const structuredData = [
+    webPageSchema({
+      type: 'AboutPage',
+      locale: lc,
+      path: routes.about,
+      name: t('meta.about.title'),
+      description: t('meta.about.description'),
+    }),
+    breadcrumbSchema([
+      { name: t('nav.home'), path: localePath(routes.home, lc) },
+      { name: t('nav.about'), path: localePath(routes.about, lc) },
+    ]),
+  ];
 
   const pillars: Array<{ icon: IconName; title: string; desc: string }> = [
     {
@@ -39,6 +64,7 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
 
   return (
     <div>
+      <JsonLd data={structuredData} />
       <PageHeader eyebrow={t('about.eyebrow')} title={t('about.title')} />
 
       <Section>
@@ -88,6 +114,47 @@ export default function AboutPage({ params: { locale } }: { params: { locale: st
               suffix={pick(lc, c.suffixAr, c.suffixEn)}
               label={pick(lc, c.labelAr, c.labelEn)}
             />
+          ))}
+        </div>
+      </Section>
+
+      {/* Certifications */}
+      <Section tight className="bg-bg-subtle border-y border-hairline">
+        <Reveal>
+          <SectionHeading
+            align="center"
+            eyebrow={t('about.certs.eyebrow')}
+            title={t('about.certs.title')}
+            description={t('about.certs.sub')}
+          />
+        </Reveal>
+        <div className="flex flex-wrap justify-center gap-5 mt-[var(--space-8)]">
+          {certifications.map((c) => (
+            <div
+              key={c.id}
+              className="flex items-center gap-4 w-full sm:w-[360px] p-5 bg-surface-card border border-hairline rounded-md"
+            >
+              <div className="flex items-center justify-center w-[76px] h-[76px] shrink-0 rounded-md bg-white border border-hairline p-2.5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={c.logo}
+                  alt={`${pick(lc, c.titleAr, c.titleEn)} certification`}
+                  width={c.width}
+                  height={c.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-h-full max-w-full w-auto object-contain"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <h3 className="m-0 font-display text-[17px] font-bold text-ink-strong">
+                  {pick(lc, c.titleAr, c.titleEn)}
+                </h3>
+                <p className="m-0 text-[13.5px] leading-[1.5] text-ink-muted">
+                  {pick(lc, c.descriptionAr, c.descriptionEn)}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </Section>

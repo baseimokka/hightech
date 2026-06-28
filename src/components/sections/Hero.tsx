@@ -65,7 +65,10 @@ export function Hero() {
             </span>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="m-0 font-display text-[clamp(2rem,1.3rem+3vw,3.5rem)] font-bold leading-[1.08] tracking-tighter2 text-white text-balance">
+            {/* English keeps the tight 1.08 leading on every screen. Arabic wraps to more
+                lines on phones and its taller glyphs clip at 1.08, so give RTL extra room
+                on mobile only (max-sm:rtl). */}
+            <h1 className="m-0 font-display text-[clamp(2rem,1.3rem+3vw,3.5rem)] font-bold leading-[1.08] max-sm:rtl:leading-[1.18] tracking-tighter2 text-white text-balance">
               {t('hero.title')}
             </h1>
           </Reveal>

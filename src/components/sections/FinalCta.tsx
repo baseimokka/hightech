@@ -11,7 +11,7 @@ export function FinalCta() {
       <div className="absolute inset-0 hatch-overlay" aria-hidden="true" />
       <div className="container-page relative flex flex-wrap items-center justify-between gap-10 py-[var(--section-y)]">
         <div className="flex max-w-[640px] flex-col gap-3">
-          <h2 className="m-0 font-display text-display-3 font-bold leading-[1.15] tracking-tight text-white text-balance">
+          <h2 className="m-0 font-display text-display-3 font-bold leading-[1.15] max-sm:rtl:leading-[1.3] tracking-tight text-white text-balance">
             {t('finalCta.title')}
           </h2>
           <p className="m-0 text-[var(--fs-lg)] text-white/90">{t('finalCta.sub')}</p>
